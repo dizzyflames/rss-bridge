@@ -16,16 +16,16 @@ class WebtoonBridge extends BridgeAbstract {
 	// const CACHE_TIMEOUT = 3600; // Can be omitted!
 
 	public function collectData() {
-		$item = array(); // Create an empty item
-        //$html = getSimpleHTMLDOM(self::URI + '//read//' + $this->getInput('n'));
+		//$item = array(); // Create an empty item
+        $html = getSimpleHTMLDOM(self::URI + '//read//' + $this->getInput('n'));
 
-        /*foreach($html->find('a', 0) as $item){
+        foreach($html->find('a', 0) as $item){
             $items = array();
             $items['uri'] = $item->href;
             $items['title'] = $item->plaintext;
             $this->items = $items;
-        }*/
-		$item['title'] = 'Hello World!';
-		$this->items[] = $item; // Add item to the list
+        }
+		//$item['title'] = 'Hello World!';
+		//$this->items[] = $item; // Add item to the list
 	}
 }
