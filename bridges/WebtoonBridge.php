@@ -1,35 +1,18 @@
 <?php
     // work in progress
-	class WebtoonBridge extends BridgeAbstract {
-        const MAINTAINER = 'DizzyFlames';
-        const URI = 'https://www.webtoon.xyz/';
-        const NAME = 'Webtoon';
-        const DESCRIPTION = 'returns all of the chapters';
-        const PARAMETERS = array( array(
-            'name' => array(
-                'name' => 'name',
-                'exampleValue' => 'escort warrior',
-                'required' => true
-            )
-        ));
+class WebtoonBridge extends BridgeAbstract {
+    const NAME = 'My Bridge';
+	const URI = 'https://github.com/RSS-Bridge/rss-bridge/wiki/BridgeAbstract';
+	const DESCRIPTION = 'Returns "Hello World!"';
+	const MAINTAINER = 'ghost';
+	// const PARAMETERS = array(); // Can be omitted!
+	// const CACHE_TIMEOUT = 3600; // Can be omitted!
 
-        public function collectData(){
-            $html = getSimpleHTMLDOM($this->getURI());
+	public function collectData() {
+		$item = array(); // Create an empty item
 
-            foreach($html->find('li.major') as $dent){
-                $item = array();
-                
-                $item['uri'] = html_entity_decode($dent->find('a', 0)->href);
-                $item['timestamp'] = strtotime($dent->find('span', 0)->plaintext);
-                $this->items[] = $item;
-            }
-        }
+		$item['title'] = 'Hello World!';
 
-        public function getURI(){
-            if(!is_null($this->getInput('name'))) {
-                return self::URI . urlencode($this->getInput('name'));
-            }
-    
-            return parent::getURI();
-        }
-    }
+		$this->items[] = $item; // Add item to the list
+	}
+}
