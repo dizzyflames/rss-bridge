@@ -1,13 +1,14 @@
 <?php
     // work in progress
 	class WebtoonBridge extends BridgeAbstract {
+        const MAINTAINER = 'DizzyFlames';
         const URI = 'https://www.webtoon.xyz/';
         const NAME = 'Webtoon';
         const DESCRIPTION = 'returns all of the chapters';
         const PARAMETERS = array( array(
             'name' => array(
                 'name' => 'name',
-                'examplevalue' => 'escort warrior',
+                'exampleValue' => 'escort warrior',
                 'required' => true
             )
         ));
