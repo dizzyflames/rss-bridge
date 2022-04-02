@@ -17,7 +17,7 @@ class WebtoonBridge extends BridgeAbstract {
 
 	public function collectData() {
 		$item = array(); // Create an empty item
-        $html = getSimpleHTMLDOM(self::URI + '//read//' + $this->getInput('n'));
+        //$html = getSimpleHTMLDOM(self::URI + '//read//' + $this->getInput('n'));
 
         /*foreach($html->find('a', 0) as $item){
             $items = array();
