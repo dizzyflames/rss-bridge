@@ -1,18 +1,31 @@
 <?php
     // work in progress
 class WebtoonBridge extends BridgeAbstract {
-    const NAME = 'My Bridge';
-	const URI = 'https://github.com/RSS-Bridge/rss-bridge/wiki/BridgeAbstract';
-	const DESCRIPTION = 'Returns "Hello World!"';
-	const MAINTAINER = 'ghost';
-	// const PARAMETERS = array(); // Can be omitted!
+    const NAME = 'Webtoon';
+	const URI = 'https://www.webtoon.xyz/';
+	const DESCRIPTION = 'Returns all chapters to date';
+	const MAINTAINER = 'dizzyflames';
+	const PARAMETERS = array(
+        'n' => array(
+            'name' => 'name',
+            'required' => true,
+            'type' => 'text',
+            'exampleValue' => 'Escort Warrior '
+        )
+    ); // Can be omitted!
 	// const CACHE_TIMEOUT = 3600; // Can be omitted!
 
 	public function collectData() {
-		$item = array(); // Create an empty item
+		//$item = array(); // Create an empty item
+        $html = getSimpleHTMLDOM(self::URI + '//read//' + $this->getInput('n'));
 
-		$item['title'] = 'Hello World!';
-
-		$this->items[] = $item; // Add item to the list
+        foreach($html->find('a', 0) as $item){
+            $items = array();
+            $items['uri'] = $item->href;
+            $items['title'] = $item->plaintext;
+            $this->items = $items;
+        }
+		//$item['title'] = 'Hello World!';
+		//$this->items[] = $item; // Add item to the list
 	}
 }
