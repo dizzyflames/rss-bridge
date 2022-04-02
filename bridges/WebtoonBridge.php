@@ -5,15 +5,13 @@ class WebtoonBridge extends BridgeAbstract {
 	const URI = 'https://www.webtoon.xyz/';
 	const DESCRIPTION = 'Returns all chapters to date';
 	const MAINTAINER = 'dizzyflames';
-	const PARAMETERS = array(
-        'My Context' => array(
-                'n' => array(
-                    'name' => 'Name',
-                    'required' => true,
-                    'type' => 'text',
-                    'exampleValue' => 'Escort Warrior'
-                )
-        )
+	const PARAMETERS = array( array(
+        'n' => array(
+            'name' => 'Name',
+            'required' => true,
+            'type' => 'text',
+            'exampleValue' => 'Escort Warrior'
+        ))
     ); // Can be omitted!
 	// const CACHE_TIMEOUT = 3600; // Can be omitted!
 
