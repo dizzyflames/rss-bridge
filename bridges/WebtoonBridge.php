@@ -27,7 +27,7 @@ class WebtoonBridge extends BridgeAbstract {
             $items = array();
             $items['uri'] = $item->href;
             $items['title'] = $item->plaintext;
-            $this->items[] = $item;
+            $this->items[] = $items;
         }
 		//$item['title'] = 'Hello World!';
 		//$this->items[] = $item; // Add item to the list
