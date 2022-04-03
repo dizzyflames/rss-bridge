@@ -23,7 +23,7 @@ class WebtoonBridge extends BridgeAbstract {
         //$html = getSimpleHTMLDOM(self::URI . '\/comics/' . str_replace(' ', '-', $this->getInput('n')));
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
 
-        foreach($html->find('a', 0) as $item){
+        foreach($html->find('ul', 0)->find('li', 0)->find('a', 0) as $item){
             $items = array();
             $items['uri'] = $item->href;
             $items['title'] = $item->plaintext;
