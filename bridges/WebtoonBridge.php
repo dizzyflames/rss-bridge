@@ -25,19 +25,18 @@ class WebtoonBridge extends BridgeAbstract {
         $num = 0;
         foreach($html->find('ul', 1)->find('li') as $element){
             foreach($element->find('a') as $element1){
-                //$item = array();
-                //$item['uri'] = $element1->href;
-                //$item['title'] = 'test';//$uri->innertext;
+                $item = array();
+                $item['uri'] = $element1->href;
+                $item['title'] = $element1->plaintext . ++$num;//$uri->innertext;
                 //$items['timestamp'] = $item->find('span', 0)->find('span', 0)->find('a', 0)->title;
-                //$this->items[] = $item;
+                $this->items[] = $item;
             }
-            $num++;
         }
-        $item = array();
+        //$item = array();
         //$item['title'] = 'hellow world';
         //$this->items[] = $item;
-        $item['uri'] = self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n'));
-		$item['title'] = 'Hello World!' . $num;
-		$this->items[] = $item; // Add item to the list
+        //$item['uri'] = self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n'));
+		//$item['title'] = 'Hello World!' . $num;
+		//$this->items[] = $item; // Add item to the list
 	}
 }
