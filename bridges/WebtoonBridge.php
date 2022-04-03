@@ -27,7 +27,7 @@ class WebtoonBridge extends BridgeAbstract {
             foreach($item->find('a', 0) as $uri){
                 $items = array();
                 $items['uri'] = $uri->href;
-                $items['title'] = $uri->plaintext;
+                $items['title'] = $uri->innertext;
                 //$items['timestamp'] = $item->find('span', 0)->find('span', 0)->find('a', 0)->title;
                 $this->items[] = $items;
             }
