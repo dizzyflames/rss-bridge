@@ -24,13 +24,13 @@ class WebtoonBridge extends BridgeAbstract {
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
 
         foreach($html->find('ul', 0)->find('li', 0) as $item){
-            foreach($item->find('a', 0) as $uri){
+            //foreach($item->find('a', 0) as $uri){
                 $items = array();
                 $items['uri'] = 'www.google.ca';//$uri->href;
                 $items['title'] = 'test';//$uri->innertext;
                 //$items['timestamp'] = $item->find('span', 0)->find('span', 0)->find('a', 0)->title;
                 $this->items[] = $items;
-            }
+            //}
         }
         //$item = array();
         //$item['title'] = 'hellow world';
