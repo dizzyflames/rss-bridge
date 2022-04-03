@@ -23,19 +23,20 @@ class WebtoonBridge extends BridgeAbstract {
         //$html = getSimpleHTMLDOM(self::URI . '\/comics/' . str_replace(' ', '-', $this->getInput('n')));
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
 
-        foreach($html->find('ul', 0)->find('li') as $element){
-            foreach($element->find('a') as $item){
-                $items = array();
-                $items['uri'] = $item->href;
-                $items['title'] = 'test';//$uri->innertext;
+        //foreach($html->find('ul', 0)->find('li') as $element){
+        //    foreach($element->find('a') as $element1){
+                //$item = array();
+                //$item['uri'] = $element1->href;
+                //$item['title'] = 'test';//$uri->innertext;
                 //$items['timestamp'] = $item->find('span', 0)->find('span', 0)->find('a', 0)->title;
-                $this->items[] = $items;
-            }
-        }
-        //$item = array();
+                //$this->items[] = $item;
+           // }
+        //}
+        $item = array();
         //$item['title'] = 'hellow world';
         //$this->items[] = $item;
-		//$item['title'] = 'Hello World!';
-		//$this->items[] = $item; // Add item to the list
+        $item['uri'] = self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n'));
+		$item['title'] = 'Hello World!';
+		$this->items[] = $item; // Add item to the list
 	}
 }
