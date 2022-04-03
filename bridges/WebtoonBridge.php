@@ -30,8 +30,8 @@ class WebtoonBridge extends BridgeAbstract {
                 //$item['title'] = 'test';//$uri->innertext;
                 //$items['timestamp'] = $item->find('span', 0)->find('span', 0)->find('a', 0)->title;
                 //$this->items[] = $item;
-                $num++;
             }
+            $num++;
         }
         $item = array();
         //$item['title'] = 'hellow world';
