@@ -51,6 +51,11 @@ class WebtoonBridge extends BridgeAbstract {
 
     public function getName()
     {
-        return $this->getInput('n');
+        if($this->getName('n') != null){
+            return $this->getName('n');
+        }
+        else {
+            return self::URI;
+        }
     }
 }
