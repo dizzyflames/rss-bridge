@@ -8,6 +8,16 @@ class WebtoonBridge extends BridgeAbstract {
 	const DESCRIPTION = 'Returns all chapters to date';
 	const MAINTAINER = 'dizzyflames';
 	const PARAMETERS = array( array(
+        'w' => array(
+            'name' => 'Website',
+            'required' => true,
+            'type' => 'list',
+            'values' => array(
+                'Hentai20.com' => 'hentai20',
+                'toonily.com' => 'toonily'
+            ),
+            'defaultValue' => 'hentai20.com'
+        )), array(
         'n' => array(
             'name' => 'Name',
             'required' => true,
