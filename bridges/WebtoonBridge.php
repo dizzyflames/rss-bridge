@@ -48,4 +48,9 @@ class WebtoonBridge extends BridgeAbstract {
     public function getIcon() {
         return static::URI . '/test.ico';
     }
+
+    public function getName()
+    {
+        return $this->getInput('n');
+    }
 }
