@@ -26,12 +26,12 @@ class WebtoonBridge extends BridgeAbstract {
         ))
     ); // Can be omitted!
 	const CACHE_TIMEOUT = 3600; // Can be omitted!
-    private $collect = false;
+    private $title;
 
 	public function collectData() {
-        $this->collect = true;
-        
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
+        $this->title = $html->find('.post-title h1')->plaintext;
+
         $img = $html->find('img.img-responsive', 0);
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             $item = array();
@@ -54,6 +54,6 @@ class WebtoonBridge extends BridgeAbstract {
 
     public function getName()
     {
-        return $this->collect ? $this->getInput('n') : self::NAME;
+        return is_null($this->title) ? $this->title : self::NAME;
     }
 }
