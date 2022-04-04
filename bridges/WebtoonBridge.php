@@ -25,7 +25,6 @@ class WebtoonBridge extends BridgeAbstract {
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
         $img = $html->find('img.img-responsive', 0);
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
-            //foreach($element->find('a') as $element1){
             $item = array();
             $element1 = $element->find('a', 0);
             $item['uri'] = $element1->href;
@@ -37,7 +36,6 @@ class WebtoonBridge extends BridgeAbstract {
             }
             $item['timestamp'] = $time;
             $this->items[] = $item;
-            //}
         }
 	}
 
