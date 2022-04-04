@@ -17,7 +17,7 @@ class WebtoonBridge extends BridgeAbstract {
                 'toonily.com' => 'toonily'
             ),
             'defaultValue' => 'hentai20.com'
-        )), array(
+        ),
         'n' => array(
             'name' => 'Name',
             'required' => true,
