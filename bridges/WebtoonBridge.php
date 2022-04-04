@@ -35,4 +35,8 @@ class WebtoonBridge extends BridgeAbstract {
             }
         }
 	}
+
+    public function getIcon() {
+        return static::URI . '/test.ico';
+    }
 }
