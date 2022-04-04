@@ -32,8 +32,7 @@ class WebtoonBridge extends BridgeAbstract {
                 //$item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $img->src . '" /></a><br />';
                 $time = strtotime($element->find('span i', 0)->plaintext);
                 if($time == null) {
-                    //$time = strtotime($element->find('span span a', 0)->title);
-                    $time = new DateTime();
+                    $time = strtotime($element->find('span span a', 0)->title);
                 }
                 $item['timestamp'] = $time;
                 $this->items[] = $item;
