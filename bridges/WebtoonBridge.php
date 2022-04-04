@@ -22,21 +22,15 @@ class WebtoonBridge extends BridgeAbstract {
         //$html = getSimpleHTMLDOM(self::URI . '//read//' . $this->getInput('n'));
         //$html = getSimpleHTMLDOM(self::URI . '\/comics/' . str_replace(' ', '-', $this->getInput('n')));
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
-        $num = 0;
+        $img = $html->find('img.img-responsive');
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             foreach($element->find('a') as $element1){
                 $item = array();
                 $item['uri'] = $element1->href;
-                $item['title'] = $element1->plaintext . ++$num;//$uri->innertext;
-                //$items['timestamp'] = $item->find('span', 0)->find('span', 0)->find('a', 0)->title;
+                $item['title'] = $element1->plaintext;
+                $item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $img->src . '" /></a><br />';
                 $this->items[] = $item;
             }
         }
-        //$item = array();
-        //$item['title'] = 'hellow world';
-        //$this->items[] = $item;
-        //$item['uri'] = self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n'));
-		//$item['title'] = 'Hello World!' . $num;
-		//$this->items[] = $item; // Add item to the list
 	}
 }
