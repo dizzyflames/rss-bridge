@@ -30,7 +30,7 @@ class WebtoonBridge extends BridgeAbstract {
 
 	public function collectData() {
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
-        $this->title = $html->find('.post-title h1')->plaintext;
+        $this->title = $html->find('.post-title h1', 0)->plaintext;
 
         $img = $html->find('img.img-responsive', 0);
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
