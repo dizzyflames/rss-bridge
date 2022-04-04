@@ -4,7 +4,7 @@ class WebtoonBridge extends BridgeAbstract {
     const NAME = 'Webtoon';
 	//const URI = 'https://www.webtoon.xyz/';
     //const URI = 'https://www.asurascans.com/';
-    const URI = 'https://hentai20.com/';
+    private $URI = 'https://hentai20.com/';
 	const DESCRIPTION = 'Returns all chapters to date';
 	const MAINTAINER = 'dizzyflames';
 	const PARAMETERS = array( array(
@@ -18,11 +18,13 @@ class WebtoonBridge extends BridgeAbstract {
 	// const CACHE_TIMEOUT = 3600; // Can be omitted!
 
 	public function collectData() {
+
 		//$item = array(); // Create an empty item
         //$html = getSimpleHTMLDOM(self::URI . '//read//' . $this->getInput('n'));
         //$html = getSimpleHTMLDOM(self::URI . '\/comics/' . str_replace(' ', '-', $this->getInput('n')));
-        $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
-        $img = $html->find('img.img-responsive');
+        $this->URI = self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n'));
+        $html = getSimpleHTMLDOM($this->URI);
+        $img = $html->find('img.img-responsive', 0);
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             foreach($element->find('a') as $element1){
                 $item = array();
