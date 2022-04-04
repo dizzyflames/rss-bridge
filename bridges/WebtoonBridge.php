@@ -27,7 +27,7 @@ class WebtoonBridge extends BridgeAbstract {
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             //foreach($element->find('a') as $element1){
             $item = array();
-            $element1 = $element->find('a');
+            $element1 = $element->find('a', 0);
             $item['uri'] = $element1->href;
             $item['title'] = $element1->plaintext;
             //$item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $img->src . '" /></a><br />';
