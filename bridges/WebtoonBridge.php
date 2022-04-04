@@ -25,18 +25,19 @@ class WebtoonBridge extends BridgeAbstract {
         $html = getSimpleHTMLDOM(self::URI . 'manga/' . str_replace(' ', '-', $this->getInput('n')));
         $img = $html->find('img.img-responsive', 0);
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
-            foreach($element->find('a') as $element1){
-                $item = array();
-                $item['uri'] = $element1->href;
-                $item['title'] = $element1->plaintext;
-                //$item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $img->src . '" /></a><br />';
-                $time = strtotime($element->find('span i', 0)->plaintext);
-                if($time == null) {
-                    $time = strtotime($element->find('span span a', 0)->title);
-                }
-                $item['timestamp'] = $time;
-                $this->items[] = $item;
+            //foreach($element->find('a') as $element1){
+            $item = array();
+            $element1 = $element->find('a');
+            $item['uri'] = $element1->href;
+            $item['title'] = $element1->plaintext;
+            //$item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $img->src . '" /></a><br />';
+            $time = strtotime($element->find('span i', 0)->plaintext);
+            if($time == null) {
+                $time = strtotime($element->find('span span a', 0)->title);
             }
+            $item['timestamp'] = $time;
+            $this->items[] = $item;
+            //}
         }
 	}
 
