@@ -19,10 +19,10 @@ class AsurascansBridge extends BridgeAbstract {
 
 	public function collectData() {
         $html = getSimpleHTMLDOM(self::URI . 'comics/' . $this->getInput('n') . '/');
-        $this->title = $html->find('.entry-title', 0)->plaintext;
-        $this->icon = $html->find('div.thumb img', 0)->src;
+        //$this->title = $html->find('.entry-title', 0)->plaintext;
+        //$this->icon = $html->find('div.thumb img', 0)->src;
 
-        foreach($html->find('ul.clstyle li', 0) as $element){
+        /*foreach($html->find('ul.clstyle li', 0) as $element){
             $item = array();
             $element1 = $element->find('a', 0);
             $item['uri'] = $element1->href;
@@ -30,15 +30,15 @@ class AsurascansBridge extends BridgeAbstract {
             //$item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $img->src . '" /></a><br />';
             $item['timestamp'] = strtotime($element1->find('span.chapterdate', 0)->plaintext);
             $this->items[] = $item;
-        }
+        }*/
 	}
 
-    public function getIcon() {
+    /*public function getIcon() {
         return $this->icon;
-    }
+    }*/
 
-    public function getName()
+    /*public function getName()
     {
         return is_null($this->title) ? self::NAME : $this->title;
-    }
+    }*/
 }
