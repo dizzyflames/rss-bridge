@@ -28,7 +28,7 @@ class LeviatanscansBridge extends BridgeAbstract {
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
-            $item['title'] = $html->find('div.listing-chapters_wrap', 0);//$element->class;//$element1->plaintext;
+            $item['title'] = $html->find('.wp-manga-chapter   ', 0);//$element->class;//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
         //}
