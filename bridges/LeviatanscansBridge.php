@@ -21,17 +21,17 @@ class LeviatanscansBridge extends BridgeAbstract {
         $html = getSimpleHTMLDOM(self::URI . 'jdm/manga/' . $this->getInput('n') . '/');
         $this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
-        $this->icon = $html->find('div.summary_image a img', 0)->src;
+        $this->icon = $html->find('.version-chap', 0)->find('.wp-manga-chapter    ')->src;
 
-        //foreach($html->find('div.listing-chapters_wrap', 1) as $element){
+        foreach($html->find('div.listing-chapters_wrap', 1) as $element){
             
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
-            $item['title'] = $html->find('.wp-manga-chapter   ', 0);//$element->class;//$element1->plaintext;
+            $item['title'] = 'hello';//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
-        //}
+        }
 	}
 
     public function getIcon() {
