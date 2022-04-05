@@ -20,7 +20,7 @@ class ReaperscansBridge extends BridgeAbstract {
 	public function collectData() {
         $html = getSimpleHTMLDOM(self::URI . 'series/' . $this->getInput('n') . '/');
         $this->title = $html->find('.post-title h1', 0)->plaintext;
-        $this->icon = $html->find('div.summary_image', 0)->find('a img')->src;
+        $this->icon = $html->find('div.summary_image', 0)->find('a img', 0)->src;
 
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             $item = array();
