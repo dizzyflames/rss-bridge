@@ -18,22 +18,16 @@ class ReaperscansBridge extends BridgeAbstract {
     private $title;
 
 	public function collectData() {
-        $uri = self::URI . 'series/' . $this->getInput('n') . '/';
         $html = getSimpleHTMLDOM(self::URI . 'series/' . $this->getInput('n') . '/');
         $this->title = $html->find('.post-title h1', 0)->plaintext;
-        foreach($html->find('a img') as $tmp){
-            if(!strpos($tmp->src, 'dflazy')){
-                $this->icon .= $tmp->src;
-            }
-            
-        }
-        //$this->icon = $html->find('div.summary_image a img', 0)->src;
+        // no images right now issue with locating the image
+        $this->icon = $html->find('div.summary_image a img', 0)->src;
 
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             $item = array();
             $element1 = $element->find('a', 0);
             $item['uri'] = $element1->href;
-            $item['title'] = $this->icon;//$element1->find('p', 0)->plaintext;
+            $item['title'] = $element1->find('p', 0)->plaintext;
             $item['timestamp'] = strtotime($element1->find('span i', 0)->plaintext);
             $this->items[] = $item;
         }
