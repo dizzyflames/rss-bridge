@@ -19,8 +19,8 @@ class AsurascansBridge extends BridgeAbstract {
 
 	public function collectData() {
         $html = getSimpleHTMLDOM(self::URI . 'comics/' . $this->getInput('n') . '/');
-        //$this->title = $html->find('.entry-title', 0)->plaintext;
-        //$this->icon = $html->find('div.thumb img', 0)->src;
+        $this->title = $html->find('.entry-title', 0)->plaintext;
+        $this->icon = $html->find('div.thumb img', 0)->src;
 
         /*foreach($html->find('ul.clstyle li', 0) as $element){
             $item = array();
