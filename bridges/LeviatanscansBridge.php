@@ -22,7 +22,7 @@ class LeviatanscansBridge extends BridgeAbstract {
         $this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
         $this->icon = $html->find('div.summary_image a img', 0)->src;
-        $str = $html->save();
+
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             
             $item = array();
