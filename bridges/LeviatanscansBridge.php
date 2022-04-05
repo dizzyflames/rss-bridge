@@ -29,7 +29,7 @@ class LeviatanscansBridge extends BridgeAbstract {
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
             $str = $element->save();
-            $item['title'] = $element->outertext;//$element1->plaintext;
+            $item['content'] = $element->outertext;//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
         }   
