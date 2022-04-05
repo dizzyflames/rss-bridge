@@ -27,7 +27,7 @@ class ReaperscansBridge extends BridgeAbstract {
             $item = array();
             $element1 = $element->find('a', 0);
             $item['uri'] = $element1->href;
-            $item['title'] = $html->find('div.summary_image a img', 0);//$element1->find('p', 0)->plaintext;
+            $item['title'] = $html->find('div.summary_image a', 0)->href;//$element1->find('p', 0)->plaintext;
             $item['timestamp'] = strtotime($element1->find('span i', 0)->plaintext);
             $this->items[] = $item;
         }
