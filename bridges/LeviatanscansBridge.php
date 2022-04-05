@@ -18,21 +18,24 @@ class LeviatanscansBridge extends BridgeAbstract {
     private $title;
 
 	public function collectData() {
-        $html = getSimpleHTMLDOM(self::URI . 'jdm/manga/' . $this->getInput('n') . '/');
-        $this->title = $html->find('.post-title h1', 0)->plaintext;
+        $url = self::URI . 'jdm/manga/' . $this->getInput('n') . '/';
+        $header = array('Content-type:text/plain', 'Content-length: 100');
+        $opts = array(CURLOPT_POST => 1);
+        $html = getContents($url, $header, $opts);
+        //$html = getSimpleHTMLDOM();
+        //$this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
-        $this->icon = $html->find('div.summary_image a img', 0)->src;
+        //$this->icon = $html->find('div.summary_image a img', 0)->src;
 
-        $tmp = $html->find('ul.version-chap');
-        foreach($html->find('.version-chap') as $element){//, 0)->find('li') as $element){
+        //$tmp = $html->find('ul.version-chap');
+        //foreach($html->find('.version-chap') as $element){//, 0)->find('li') as $element){
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
-            $str = $element->save();
-            $item['content'] = $element->outertext;//$element1->plaintext;
+            $item['content'] = $html;//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
-        }   
+        //}   
 	}
 
     public function getIcon() {
