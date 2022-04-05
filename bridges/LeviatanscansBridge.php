@@ -23,12 +23,13 @@ class LeviatanscansBridge extends BridgeAbstract {
         // no images right now issue with locating the image
         $this->icon = $html->find('div.summary_image a img', 0)->src;
 
-        foreach($html->find('#manga-chapters-holder', 0)->find('ul.version-chap', 0)->find('li') as $element){//, 0)->find('li') as $element){
+        $tmp = $html->find('ul.version-chap', 0)->find('li');
+        //foreach($html->find('#manga-chapters-holder', 0)->find('ul.version-chap', 0)->find('li') as $element){//, 0)->find('li') as $element){
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
             $str = $element->save();
-            $item['title'] = 'hello';//$element1->plaintext;
+            $item['title'] = $tmp;//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
         }
