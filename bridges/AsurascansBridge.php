@@ -22,7 +22,7 @@ class AsurascansBridge extends BridgeAbstract {
         $this->title = $html->find('.entry-title', 0)->plaintext;
         $this->icon = $html->find('div.thumb img', 0)->src;
 
-        foreach($html->find('ul.clstyle li', 0) as $element){
+        foreach($html->find('ul.clstyle', 0)->find('li') as $element){
             $item = array();
             /*$element1 = $element->find('a', 0);
             $item['uri'] = $element1->href;
