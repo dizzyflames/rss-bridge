@@ -33,12 +33,12 @@ class AsurascansBridge extends BridgeAbstract {
         }*/
 	}
 
-    /*public function getIcon() {
+    public function getIcon() {
         return $this->icon;
-    }*/
+    }
 
-    /*public function getName()
+    public function getName()
     {
         return is_null($this->title) ? self::NAME : $this->title;
-    }*/
+    }
 }
