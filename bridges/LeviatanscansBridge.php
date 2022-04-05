@@ -1,6 +1,6 @@
 <?php
     // work in progress
-class LeviatenscansBridge extends BridgeAbstract {
+class LeviatanscansBridge extends BridgeAbstract {
     const NAME = 'Leviatanscans';
     const URI = 'https://leviatanscans.com/';
 	const DESCRIPTION = 'Returns all chapters to date from Reaperscans';
