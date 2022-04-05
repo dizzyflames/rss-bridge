@@ -3,7 +3,7 @@
 class LeviatanscansBridge extends BridgeAbstract {
     const NAME = 'Leviatanscans';
     const URI = 'https://leviatanscans.com/';
-	const DESCRIPTION = 'Returns all chapters to date from Reaperscans';
+	const DESCRIPTION = 'Returns all chapters to date from Leviatanscans';
 	const MAINTAINER = 'DizzyFlames';
 	const PARAMETERS = array( array(
         'n' => array(
@@ -28,7 +28,7 @@ class LeviatanscansBridge extends BridgeAbstract {
             $element1 = $element->find('a', 0);
             $item['uri'] = $element1->href;
             $item['title'] = $element1->plaintext;
-            $item['timestamp'] = strtotime($element1->find('span i', 0)->plaintext);
+            $item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
         }
 	}
