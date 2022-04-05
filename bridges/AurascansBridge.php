@@ -1,6 +1,6 @@
 <?php
     // work in progress
-class WebtoonBridge extends BridgeAbstract {
+class AsurascansBridge extends BridgeAbstract {
     const NAME = 'Asurascans';
     const URI = 'https://www.asurascans.com/';
 	const DESCRIPTION = 'Returns all chapters to date from Asurascans';
