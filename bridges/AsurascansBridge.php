@@ -28,7 +28,7 @@ class AsurascansBridge extends BridgeAbstract {
             $item['uri'] = $element1->href;
             $item['title'] = $element1->find('span.chapternum', 0)->plaintext;
             //$item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $img->src . '" /></a><br />';
-            $item['timestamp'] = strtotime($element->find('span.chapterdate', 0)->plaintext);
+            $item['timestamp'] = strtotime($element1->find('span.chapterdate', 0)->plaintext);
             $this->items[] = $item;
         }
 	}
