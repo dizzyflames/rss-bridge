@@ -24,15 +24,15 @@ class LeviatanscansBridge extends BridgeAbstract {
         $this->icon = $html->find('div.summary_image a img', 0)->src;
 
         $tmp = $html->find('ul.version-chap');
-        //foreach($html->find('#manga-chapters-holder', 0)->find('ul.version-chap', 0)->find('li') as $element){//, 0)->find('li') as $element){
-        $item = array();
-        //$element1 = $element->find('a', 0);
-        //$item['uri'] = $element1->href;
-        $str = $tmp->save();
-        $item['title'] = $str;//$element1->plaintext;
-        //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
-        $this->items[] = $item;
-        //}   
+        foreach($html->find('ul.version-chap') as $element){//, 0)->find('li') as $element){
+            $item = array();
+            //$element1 = $element->find('a', 0);
+            //$item['uri'] = $element1->href;
+            $str = $element->save();
+            $item['title'] = $str;//$element1->plaintext;
+            //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
+            $this->items[] = $item;
+        }   
 	}
 
     public function getIcon() {
