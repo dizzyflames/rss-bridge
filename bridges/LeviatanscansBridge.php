@@ -24,10 +24,11 @@ class LeviatanscansBridge extends BridgeAbstract {
         $this->icon = $html->find('div.summary_image a img', 0)->src;
 
         //foreach($html->find('div.listing-chapters_wrap', 1) as $element){
+            
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
-            $item['title'] = $html->outerhtml;//$element->class;//$element1->plaintext;
+            $item['title'] = $html->find('div.listing-chapters_wrap', 0);//$element->class;//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
         //}
