@@ -25,7 +25,7 @@ class LeviatanscansBridge extends BridgeAbstract {
 
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
             $item = array();
-            //$element1 = $element->find('a', 0);
+            $element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
             //$item['title'] = $element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
