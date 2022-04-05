@@ -23,14 +23,14 @@ class LeviatanscansBridge extends BridgeAbstract {
         // no images right now issue with locating the image
         $this->icon = $html->find('div.summary_image a img', 0)->src;
 
-        foreach($html->find('ul.version-chap', 0)->find('li') as $element){
-            $item = array();
+        //foreach($html->find('ul.version-chap', 0)->find('li') as $element){
+            //$item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
             //$item['title'] = 'hello world!';//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
-            $this->items[] = $item;
-        }
+            //$this->items[] = $item;
+        //}
 	}
 
     public function getIcon() {
