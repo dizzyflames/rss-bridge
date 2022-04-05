@@ -18,13 +18,12 @@ class LeviatanscansBridge extends BridgeAbstract {
     private $title;
 
 	public function collectData() {
-        $html = file_get_html(self::URI . 'jdm/manga/' . $this->getInput('n') . '/');
+        $html = getSimpleHTMLDOM(self::URI . 'jdm/manga/' . $this->getInput('n') . '/');
         $this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
         $this->icon = $html->find('div.summary_image a img', 0)->src;
 
         foreach($html->find('ul.version-chap', 0)->find('li') as $element){
-            
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
