@@ -22,7 +22,10 @@ class ReaperscansBridge extends BridgeAbstract {
         $html = getSimpleHTMLDOM(self::URI . 'series/' . $this->getInput('n') . '/');
         $this->title = $html->find('.post-title h1', 0)->plaintext;
         foreach($html->find('a img') as $tmp){
-            $this->icon .= $tmp->src;
+            if(strpos($tmp->src, 'dflazy')){
+                $this->icon .= $tmp->src;
+            }
+            
         }
         //$this->icon = $html->find('div.summary_image a img', 0)->src;
 
