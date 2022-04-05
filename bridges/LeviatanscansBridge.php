@@ -24,7 +24,7 @@ class LeviatanscansBridge extends BridgeAbstract {
         $this->icon = $html->find('div.summary_image a img', 0)->src;
 
         $tmp = $html->find('ul.version-chap');
-        foreach($html->find('ul.version-chap') as $element){//, 0)->find('li') as $element){
+        foreach($html->find('ul') as $element){//, 0)->find('li') as $element){
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
