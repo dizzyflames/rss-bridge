@@ -21,9 +21,9 @@ class LeviatanscansBridge extends BridgeAbstract {
         $html = getSimpleHTMLDOM(self::URI . 'jdm/manga/' . $this->getInput('n') . '/');
         $this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
-        $this->icon = $html->find('.version-chap', 0)->find('.wp-manga-chapter    ')->src;
+        $this->icon = $html->find('div.summary_image a img', 0)->src;
 
-        foreach($html->find('div.listing-chapters_wrap', 1) as $element){
+        foreach($html->find('.version-chap', -1)->find('li') as $element){
             
             $item = array();
             //$element1 = $element->find('a', 0);
