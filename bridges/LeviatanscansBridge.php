@@ -56,7 +56,7 @@ class LeviatanscansBridge extends BridgeAbstract {
         $header = array('Content-type:text/plain', 'Content-length: 100');
         $opts = array(CURLOPT_POST => 1);
         //$html = getContents($url, $header, $opts);
-		$html = $this->levGetSimpleHTMLDOM($url, true);
+		$html = $this->levGetSimpleHTMLDOM('https://www.youtube.com/results?search_query=ryan+george', true);
         //$html = getSimpleHTMLDOM();
         //$this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
