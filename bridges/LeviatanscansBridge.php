@@ -56,23 +56,23 @@ class LeviatanscansBridge extends BridgeAbstract {
         $header = array('Content-type:text/plain', 'Content-length: 100');
         $opts = array(CURLOPT_POST => 1);
         //$html = getContents($url, $header, $opts);
-		$html = $this->levGetSimpleHTMLDOM($url);
+		$html = $this->levGetSimpleHTMLDOM($url, true);
         //$html = getSimpleHTMLDOM();
         //$this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
         //$this->icon = $html->find('div.summary_image a img', 0)->src;
 
         //$tmp = $html->find('ul.version-chap');
-        foreach($html->find('.version-chap', 0)->find('li') as $element){//, 0)->find('li') as $element){
+        //foreach($html->find('.version-chap', 0)->find('li') as $element){//, 0)->find('li') as $element){
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
 			$c = $html->save();
-            //$item['content'] = $c;//$element1->plaintext;
-			$item['title'] = 'hello world';
+            $item['content'] = $c;//$element1->plaintext;
+			//$item['title'] = 'hello world';
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
-        }   
+        //}   
 	}
 
     public function getIcon() {
