@@ -17,11 +17,46 @@ class LeviatanscansBridge extends BridgeAbstract {
     private $icon;
     private $title;
 
+	private function levGetSimpleHTMLDOM($url, $cached = false){
+		$header = array(
+			'Accept-Language: en-US'
+		);
+		$opts = array();
+		$lowercase = true;
+		$forceTagsClosed = true;
+		$target_charset = DEFAULT_TARGET_CHARSET;
+		$stripRN = false;
+		$defaultBRText = DEFAULT_BR_TEXT;
+		$defaultSpanText = DEFAULT_SPAN_TEXT;
+		if ($cached) {
+			return getSimpleHTMLDOMCached($url,
+				86400,
+				$header,
+				$opts,
+				$lowercase,
+				$forceTagsClosed,
+				$target_charset,
+				$stripRN,
+				$defaultBRText,
+				$defaultSpanText);
+		}
+		return getSimpleHTMLDOM($url,
+			$header,
+			$opts,
+			$lowercase,
+			$forceTagsClosed,
+			$target_charset,
+			$stripRN,
+			$defaultBRText,
+			$defaultSpanText);
+	}
+
 	public function collectData() {
         $url = self::URI . 'jdm/manga/' . $this->getInput('n') . '/';
         $header = array('Content-type:text/plain', 'Content-length: 100');
         $opts = array(CURLOPT_POST => 1);
-        $html = getContents($url, $header, $opts);
+        //$html = getContents($url, $header, $opts);
+		$html = $this->levGetSimpleHTMLDOM($url);
         //$html = getSimpleHTMLDOM();
         //$this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
@@ -32,7 +67,8 @@ class LeviatanscansBridge extends BridgeAbstract {
             $item = array();
             //$element1 = $element->find('a', 0);
             //$item['uri'] = $element1->href;
-            $item['content'] = $html;//$element1->plaintext;
+			$c = $html->save();
+            $item['content'] = $c;//$element1->plaintext;
             //$item['timestamp'] = strtotime($element->find('span i', 0)->plaintext);
             $this->items[] = $item;
         //}   
@@ -46,4 +82,6 @@ class LeviatanscansBridge extends BridgeAbstract {
     {
         return is_null($this->title) ? self::NAME : $this->title;
     }
+
+    
 }
