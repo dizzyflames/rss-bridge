@@ -52,7 +52,7 @@ class LeviatanscansBridge extends BridgeAbstract {
 	}
 
 	public function collectData() {
-        $url = self::URI . 'jdm/manga/' . $this->getInput('n') . '/';
+        $url = self::URI . 'hcn/manga/' . $this->getInput('n') . '/';
         $header = array('Content-type:text/plain', 'Content-length: 100');
         $opts = array(CURLOPT_POST => 1);
         //$html = getContents($url, $header, $opts);
