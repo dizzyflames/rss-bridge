@@ -53,10 +53,10 @@ class LeviatanscansBridge extends BridgeAbstract {
 
 	public function collectData() {
         $url = self::URI . 'hcn/manga/' . $this->getInput('n') . '/';
-        $header = array('Content-type:text/plain', 'Content-length: 100');
-        $opts = array(CURLOPT_POST => 1);
+        //$header = array('Content-type:text/plain', 'Content-length: 100');
+        //$opts = array(CURLOPT_POST => 1);
         //$html = getContents($url, $header, $opts);
-		$html = $this->levGetSimpleHTMLDOM('https://www.youtube.com/results?search_query=ryan+george', true);
+		$html = file_get_html('https://www.youtube.com/results?search_query=testing');
         //$html = getSimpleHTMLDOM();
         //$this->title = $html->find('.post-title h1', 0)->plaintext;
         // no images right now issue with locating the image
