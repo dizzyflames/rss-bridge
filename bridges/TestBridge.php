@@ -34,8 +34,12 @@ class TestBridge extends BridgeAbstract {
             $item['content'] = $json;
 
             foreach($json as $data){
-                echo $data;
+                if(isset($data->itemSectionRenderer->contents[0]->videoRenderer)) {
+					$json = $data->itemSectionRenderer->contents;
+					break;
+				}
             }
+            echo $json;
         } else {
             $item['content'] = 'is null';
         }
