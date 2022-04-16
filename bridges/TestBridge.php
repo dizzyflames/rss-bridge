@@ -31,7 +31,7 @@ class TestBridge extends BridgeAbstract {
         $item = array();
         //$c = $json->save();
         if(isset($json)){
-            $item['content'] = $json;
+            //$item['content'] = $json;
 
             foreach($json as $data){
                 if(isset($data->itemSectionRenderer->contents[0]->videoRenderer)) {
@@ -40,6 +40,7 @@ class TestBridge extends BridgeAbstract {
 					break;
 				}
             }
+            $this->item['content'] = $json;
         } else {
             $item['content'] = 'is null';
         }
