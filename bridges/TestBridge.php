@@ -4,7 +4,7 @@ class TestBridge extends BridgeAbstract {
     const URI = 'https://www.youtube.com/';
     const DESCRIPTION = 'Testing bridge';
     const MAINTAINER = 'Me';
-    const parameters = array( array(
+    const PARAMETERS = array( array(
         'n' => array(
             'name' => 'input',
             'required' => true,
