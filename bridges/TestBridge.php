@@ -28,7 +28,11 @@ class TestBridge extends BridgeAbstract {
 
         $item = array();
         $c = $html->save();
-        $item['content'] = $json;
+        if(isset($json)){
+            $item['content'] = $json;
+        } else {
+            $item['content'] = 'is null';
+        }
         $this->items[] = $item;
     }
     
