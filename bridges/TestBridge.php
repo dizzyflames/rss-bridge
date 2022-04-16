@@ -1,14 +1,14 @@
 <?php
 class TestBridge extends BridgeAbstract {
-    const NAME = 'Youtube';
+    const NAME = 'Youtube Test';
     const URI = 'https://www.youtube.com/';
-    const DESCRIPTION = '';
+    const DESCRIPTION = 'Testing bridge';
     const MAINTAINER = 'Me';
-    const parameters = array(
-        array('n' => array(
+    const parameters = array( array(
+        'n' => array(
             'name' => 'input',
-            'type' => 'text',
             'required' => true,
+            'type' => 'text',
             'exampleValue' => 'test input'
         ))
     );
