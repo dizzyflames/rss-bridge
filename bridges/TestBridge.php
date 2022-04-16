@@ -27,9 +27,9 @@ class TestBridge extends BridgeAbstract {
         // Parse JSON data
 
         $item = array();
-        $c = $html->save();
+        $c = $json->save();
         if(isset($json)){
-            $item['content'] = $json;
+            $item['content'] = $c;
         } else {
             $item['content'] = 'is null';
         }
