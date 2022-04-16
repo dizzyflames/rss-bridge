@@ -389,11 +389,9 @@ class YoutubeBridge extends BridgeAbstract {
 					break;
 				}
 			}
-			$item['content'] = $jsonData;
-			$items[] = $item;
-			//$this->parseJSONListing($jsonData);
-			//$this->feeduri = $url_listing;
-			//$this->feedName = 'Search: ' . $this->request; // feedName will be used by getName()
+			$this->parseJSONListing($jsonData);
+			$this->feeduri = $url_listing;
+			$this->feedName = 'Search: ' . $this->request; // feedName will be used by getName()
 		} else { /* no valid mode */
 			returnClientError("You must either specify either:\n - YouTube
  username (?u=...)\n - Channel id (?c=...)\n - Playlist id (?p=...)\n - Search (?s=...)");
