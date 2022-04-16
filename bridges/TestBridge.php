@@ -57,19 +57,8 @@ class TestBridge extends BridgeAbstract {
 
     // parses json and adds item
     private function parseJSONListing($jsonData) {
-		$duration_min = $this->getInput('duration_min') ?: -1;
-		$duration_min = $duration_min * 60;
 
-		$duration_max = $this->getInput('duration_max') ?: INF;
-		$duration_max = $duration_max * 60;
-
-		if($duration_max < $duration_min) {
-			returnClientError('Max duration must be greater than min duration!');
-		}
-
-		// $vid_list = '';
-
-		foreach($jsonData as $item) {
+        foreach($jsonData as $item) {
 			$wrapper = null;
 			if(isset($item->gridVideoRenderer)) {
 				$wrapper = $item->gridVideoRenderer;
