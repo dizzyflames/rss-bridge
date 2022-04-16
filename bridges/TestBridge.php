@@ -40,11 +40,12 @@ class TestBridge extends BridgeAbstract {
 					break;
 				}
             }
-            $this->item['content'] = $json;
+            $this->parseJSONListing($json);
+
         } else {
             $item['content'] = 'is null';
         }
-        $this->items[] = $item;
+       // $this->items[] = $item;
     }
     
     // decodes the script into json
@@ -125,7 +126,22 @@ class TestBridge extends BridgeAbstract {
 
 			// $vid_list .= $vid . ',';
 			//$this->ytBridgeQueryVideoInfo($vid, $author, $desc, $time);
-			//$this->ytBridgeAddItem($vid, $title, $author, $desc, $time);
+			$this->ytBridgeAddItem($vid, $title, $author, $desc, $time);
 		}
+	}
+
+    private function ytBridgeAddItem($vid, $title, $author, $desc, $time, $thumbnail = ''){
+		$item = array();
+		$item['id'] = $vid;
+		$item['title'] = $title;
+		$item['author'] = $author;
+		$item['timestamp'] = $time;
+		$item['uri'] = self::URI . 'watch?v=' . $vid;
+		if(!$thumbnail) {
+			$thumbnail = '0';	// Fallback to default thumbnail if there aren't any provided.
+		}
+		$thumbnailUri = str_replace('/www.', '/img.', self::URI) . 'vi/' . $vid . '/' . $thumbnail . '.jpg';
+		$item['content'] = '<a href="' . $item['uri'] . '"><img src="' . $thumbnailUri . '" /></a><br />' . $desc;
+		$this->items[] = $item;
 	}
 }
