@@ -23,13 +23,15 @@ class TestBridge extends BridgeAbstract {
 
         // get JSON data
         $json = $this->getJSONData($html);
+        $json = $json->contents->twoColumnSearchResultsRenderer->primaryContents;
+		$json = $json->sectionListRenderer->contents;
 
         // Parse JSON data
 
         $item = array();
-        $c = $json->save();
+        //$c = $json->save();
         if(isset($json)){
-            $item['content'] = $c;
+            $item['content'] = $json;
         } else {
             $item['content'] = 'is null';
         }
