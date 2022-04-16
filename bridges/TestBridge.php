@@ -80,39 +80,6 @@ class TestBridge extends BridgeAbstract {
 			$author = '';
 			$desc = '';
 			$time = '';
-
-			// The duration comes in one of the formats:
-			// hh:mm:ss / mm:ss / m:ss
-			// 01:03:30 / 15:06 / 1:24
-			$durationText = 0;
-			if(isset($wrapper->lengthText)) {
-				$durationText = $wrapper->lengthText;
-			} else {
-				foreach($wrapper->thumbnailOverlays as $overlay) {
-					if(isset($overlay->thumbnailOverlayTimeStatusRenderer)) {
-						$durationText = $overlay->thumbnailOverlayTimeStatusRenderer->text;
-						break;
-					}
-				}
-			}
-
-			if(isset($durationText->simpleText)) {
-				$durationText = trim($durationText->simpleText);
-			} else {
-				$durationText = 0;
-			}
-
-			if(preg_match('/([\d]{1,2}):([\d]{1,2})\:([\d]{2})/', $durationText)) {
-				$durationText = preg_replace('/([\d]{1,2}):([\d]{1,2})\:([\d]{2})/', '$1:$2:$3', $durationText);
-			} else {
-				$durationText = preg_replace('/([\d]{1,2})\:([\d]{2})/', '00:$1:$2', $durationText);
-			}
-			sscanf($durationText, '%d:%d:%d', $hours, $minutes, $seconds);
-			$duration = $hours * 3600 + $minutes * 60 + $seconds;
-			if($duration < $duration_min || $duration > $duration_max) {
-				continue;
-			}
-
 			// $vid_list .= $vid . ',';
 			//$this->ytBridgeQueryVideoInfo($vid, $author, $desc, $time);
 			$this->ytBridgeAddItem($vid, $title, $author, $desc, $time);
