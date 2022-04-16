@@ -32,7 +32,10 @@ class TestBridge extends BridgeAbstract {
         //$c = $json->save();
         if(isset($json)){
             $item['content'] = $json;
-            echo $json;
+
+            foreach($json as $data){
+                echo $data;
+            }
         } else {
             $item['content'] = 'is null';
         }
