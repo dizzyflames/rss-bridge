@@ -18,7 +18,7 @@ class AsurascansBridge extends BridgeAbstract {
     private $title;
 
 	public function collectData() {
-        // curl GET
+        // curl GET webscrapingapi
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_URL => 'https://api.webscrapingapi.com/v1?api_key=ihkdC0RIQnGaYKD4qs05cIj2fQeX89Gx&url=https%3A%2F%2Fwww.asurascans.com%2Fcomics%2F' . $this->getInput('n') . '%2F&device=desktop&proxy_type=datacenter&render_js=1&wait_until=domcontentloaded',
@@ -33,16 +33,11 @@ class AsurascansBridge extends BridgeAbstract {
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        // create a DOM object out of the html
         $html = new simple_html_dom();
         $html->load($response);
-        /*$doc = new simple_html_dom();
-        $doc->loadHTML($response);
-        $doc->load*/
 
-        /*$html = getSimpleHTMLDOM(self::URI . 'comics/' . $this->getInput('n') . '/');
-        $this->title = $html->find('.entry-title', 0)->plaintext;
-        $this->icon = $html->find('div.thumb img', 0)->src;*/
-
+        // get the chapter details
         foreach($html->find('ul.clstyle', 0)->find('li') as $element){
             $item = array();
             $element1 = $element->find('a', 0);
