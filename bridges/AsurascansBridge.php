@@ -18,9 +18,30 @@ class AsurascansBridge extends BridgeAbstract {
     private $title;
 
 	public function collectData() {
-        $html = getSimpleHTMLDOM(self::URI . 'comics/' . $this->getInput('n') . '/');
+        // curl GET
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.webscrapingapi.com/v1?api_key=ihkdC0RIQnGaYKD4qs05cIj2fQeX89Gx&url=https%3A%2F%2Fwww.asurascans.com%2Fcomics%2F' . $this->getInput('n') . '%2F&device=desktop&proxy_type=datacenter&render_js=1&wait_until=domcontentloaded',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'cache-control: no-cache'
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        $html = new simple_html_dom();
+        $html->load($response);
+        /*$doc = new simple_html_dom();
+        $doc->loadHTML($response);
+        $doc->load*/
+
+        /*$html = getSimpleHTMLDOM(self::URI . 'comics/' . $this->getInput('n') . '/');
         $this->title = $html->find('.entry-title', 0)->plaintext;
-        $this->icon = $html->find('div.thumb img', 0)->src;
+        $this->icon = $html->find('div.thumb img', 0)->src;*/
 
         foreach($html->find('ul.clstyle', 0)->find('li') as $element){
             $item = array();
