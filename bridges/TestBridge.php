@@ -15,18 +15,23 @@ class TestBridge extends BridgeAbstract {
 
     public function collectData()
     {
-        // get url
-        $url = self::URI . 'results?search_query=' . $this->getInput('n');
+        // GET from API
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.webscrapingapi.com/v1?api_key=ihkdC0RIQnGaYKD4qs05cIj2fQeX89Gx&url=https%3A%2F%2Fwww.asurascans.com%2Fcomics%2F' . $this->getInput('n') . '%2F&device=desktop&proxy_type=datacenter&render_js=1&wait_until=domcontentloaded',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_HTTPHEADER => array(
+                'cache-control: no-cache'
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
 
-        // get DOM
-        $html = getSimpleHTMLDOM($url);
-
-        // get JSON data
-        $json = $this->getJSONData($html);
-        $json = $json->contents->twoColumnSearchResultsRenderer->primaryContents;
-		$json = $json->sectionListRenderer->contents;
-
-        // Parse JSON data
+        $doc = new DOMDocument();
+        $doc->loadHTML($response);
 
         $item = array();
         //$c = $json->save();
@@ -45,6 +50,8 @@ class TestBridge extends BridgeAbstract {
         } else {
             $item['content'] = 'is null';
         }
+
+        curl_close($curl);
        // $this->items[] = $item;
     }
     
